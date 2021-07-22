@@ -6,7 +6,7 @@ using System.Web;
 using Tutor.Models;
 using TutorWebApp;
 
-namespace Tutor.Database
+namespace Tutor.Operations
 {
     public class DatabaseOperations
     {
@@ -45,7 +45,7 @@ namespace Tutor.Database
 
         public static void InsertRequest(Requests request)
         {
-            string query = "INSERT INTO Requests (Id, RequestorId, Title, Category, Details, Price, TutorID) VALUES ((@Id, @RequestorId, @Title, @Category, @Details, @Price, @TutorID);";
+            string query = "INSERT INTO Requests (RequestorId, Title, Category, Details, Price, TutorID) VALUES (@RequestorId, @Title, @Category, @Details, @Price, @TutorID);";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id }, { "@RequestorId", request.RequestorId }, { "@Title", request.Title }, { "@Category", request.Category }, { "@Details", request.Details }, { "@Price", request.Price }, { "@TutorID", request.TutorID } };
             ExecuteCommand(query, parameters);
         }

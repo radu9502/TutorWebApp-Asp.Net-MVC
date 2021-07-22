@@ -28,6 +28,8 @@ namespace Tutor.Models
             TutorID = Convert.ToInt32(reader["TutorID"]);
 
         }
+        public Requests()
+        { }
 
     }
 
