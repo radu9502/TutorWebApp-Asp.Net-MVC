@@ -3,16 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Tutor.Operations;
-using Tutor.Models;
+using TutorWebApp.Models;
 
-namespace Bazar.Operations
+namespace TutorWebApp.Operations
 {
-    public class Main
+    public class RequestsManagement
     {
         public static List<Requests> requests = new List<Requests>();
 
-        public static List<Requests> GetCars()
+        public static List<Requests> GetRequests()
         {
             requests = DatabaseOperations.FetchAllRequests();
             return requests;
@@ -26,10 +25,10 @@ namespace Bazar.Operations
             }
             return request;
         }
-        public static void RemoveCar(int id)
+        public static void RemoveRequest(int id)
         {
             Requests request = GetRequestById(id);
-            DatabaseOperations.RemoveRequest(request);
+            DatabaseOperations.RemoveRequest(GetRequestById(id));
             requests.Remove(request);
             
         }

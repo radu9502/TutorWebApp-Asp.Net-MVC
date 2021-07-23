@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using Tutor.Models;
+using TutorWebApp.Models;
 using TutorWebApp;
 
-namespace Tutor.Operations
+namespace TutorWebApp.Operations
 {
+    
     public class DatabaseOperations
     {
+        #region Requests
         public static List<Requests> FetchAllRequests()
         {
             List<Requests> allRequests = new List<Requests>();
@@ -21,7 +23,7 @@ namespace Tutor.Operations
                 using (conn)
                 {
                     conn.Open();
-                    SqlCommand command = new SqlCommand("SELECT * FROM cars", conn);
+                    SqlCommand command = new SqlCommand("SELECT * FROM Requests", conn);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -85,7 +87,38 @@ namespace Tutor.Operations
             {
                 Console.WriteLine(err);
             }
-
         }
+        #endregion
+        #region Categories
+        public static List<Category> FetchAllCategories()
+        {
+            List<Category> allCategories = new List<Category>();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = Startup.ConnectionString;
+
+            try
+            {
+                using (conn)
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand("SELECT * FROM Categories WHERE Visibility = 1", conn);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Category category = new Category(reader);
+                            allCategories.Add(category);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return allCategories;
+        }
+        #endregion
     }
 }

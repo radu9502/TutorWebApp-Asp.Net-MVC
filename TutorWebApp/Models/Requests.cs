@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Tutor.Models
+namespace TutorWebApp.Models
 {
     public class Requests
     {
@@ -16,7 +16,9 @@ namespace Tutor.Models
         public string Details { get; set; }
         public int Price { get; set; }
         public int TutorID { get; set; }
-
+        //   public int Dificulty { get; set; } // generala/liceu/facultate
+        //   public int PublishDate { get; set; }
+        //   public bool Visibility { get; set; }
         public Requests(SqlDataReader reader)
         {
             Id = Convert.ToInt32(reader["Id"]);
@@ -26,7 +28,8 @@ namespace Tutor.Models
             Details = reader["Details"].ToString();
             Price = Convert.ToInt32(reader["Price"]);
             TutorID = Convert.ToInt32(reader["TutorID"]);
-
+           // PublishDate = Convert.ToInt32(reader["PublishDate"]);
+            // Visibility = Convert.ToBoolean(reader["Visibility"]);
         }
         public Requests()
         { }
