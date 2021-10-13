@@ -18,8 +18,10 @@ namespace TutorWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page)
         {
+            if (page == 0) page = 1;
+            ViewBag.page = page;
             return View();
         }
 

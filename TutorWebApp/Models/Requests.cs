@@ -16,9 +16,9 @@ namespace TutorWebApp.Models
         public string Details { get; set; }
         public int Price { get; set; }
         public int TutorID { get; set; }
-        //   public int Dificulty { get; set; } // generala/liceu/facultate
-        //   public int PublishDate { get; set; }
-        //   public bool Visibility { get; set; }
+        public int Dificulty { get; set; } // generala/liceu/facultate
+        public int PublishDate { get; set; }
+        public int Visibility { get; set; }
         public Requests(SqlDataReader reader)
         {
             Id = Convert.ToInt32(reader["Id"]);
@@ -28,8 +28,9 @@ namespace TutorWebApp.Models
             Details = reader["Details"].ToString();
             Price = Convert.ToInt32(reader["Price"]);
             TutorID = Convert.ToInt32(reader["TutorID"]);
-           // PublishDate = Convert.ToInt32(reader["PublishDate"]);
-            // Visibility = Convert.ToBoolean(reader["Visibility"]);
+            Dificulty = Convert.ToInt32(reader["Dificulty"]);
+            PublishDate = Convert.ToInt32(reader["PublishDate"]);
+            Visibility = Convert.ToInt32(reader["Visibility"]);
         }
         public Requests()
         { }
