@@ -7,8 +7,8 @@ namespace TutorWebApp.Models
 {
     public class Filter
     {
-        public List<int> Cateogries { get; set; }
-        public List<int> SubCateogries { get; set; }
+        public List<int> Categories { get; set; }
+        public List<int> SubCategories { get; set; }
         public List<int> Difficulties { get; set; }
 
     }

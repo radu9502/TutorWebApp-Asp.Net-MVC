@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace TutorWebApp.Controllers
         {
             return Tasks();
         }
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
