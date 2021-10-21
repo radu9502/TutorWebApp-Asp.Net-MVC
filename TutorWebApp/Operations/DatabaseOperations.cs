@@ -12,9 +12,9 @@ namespace TutorWebApp.Operations
     public class DatabaseOperations
     {
         #region Requests
-        public static List<Requests> FetchAllRequests()
+        public static List<Request> FetchAllRequests()
         {
-            List<Requests> allRequests = new List<Requests>();
+            List<Request> allRequests = new List<Request>();
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = Startup.ConnectionString;
 
@@ -28,7 +28,7 @@ namespace TutorWebApp.Operations
                     {
                         while (reader.Read())
                         {
-                            Requests request = new Requests(reader);
+                            Request request = new Request(reader);
                             allRequests.Add(request);
                         }
                     }
@@ -43,18 +43,16 @@ namespace TutorWebApp.Operations
         }
 
 
-
-
-        public static void InsertRequest(Requests request)
+        public static void InsertRequest(Request request)
         {
             string query = "INSERT INTO Requests (RequestorId, Title, Category, Details, Price, TutorID) VALUES (@RequestorId, @Title, @Category, @Details, @Price, @TutorID);";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id }, { "@RequestorId", request.RequestorId }, { "@Title", request.Title }, { "@Category", request.Category }, { "@Details", request.Details }, { "@Price", request.Price }, { "@TutorID", request.TutorID } };
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id }, { "@RequestorId", request.RequestorId }, { "@Title", request.Title }, { "@Category", request.CategoryId }, { "@Details", request.Details }, { "@Price", request.Price }, { "@TutorID", request.TutorID } };
             ExecuteCommand(query, parameters);
         }
 
 
 
-        public static void RemoveRequest(Requests request)
+        public static void RemoveRequest(Request request)
         {
             string query = "DELETE FROM Requests WHERE Id = @Id;";
             Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id } };

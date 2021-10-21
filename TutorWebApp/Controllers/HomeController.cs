@@ -19,18 +19,24 @@ namespace TutorWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int page, Filter filter)
+        public IActionResult Index()
+        {
+         
+            return View();
+        }
+        public IActionResult Requests(int page, Filter filter)
         {
             if (page == 0) page = 1;
             ViewBag.filter = filter;
             ViewBag.page = page;
             return View();
         }
-        public IActionResult Tasks()
-        {
-            return Tasks();
-        }
+   
         [Authorize]
+        public IActionResult Request()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

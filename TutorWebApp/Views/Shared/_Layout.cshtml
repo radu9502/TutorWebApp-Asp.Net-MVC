@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    @Html.Partial("/Views/Shared/_LoginPartial.cshtml")
+  
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -27,8 +27,12 @@
                         </li>
                     </ul>
                 </div>
+                <div class="float-lg-left">
+                    @Html.Partial("/Views/Shared/_LoginPartial.cshtml")
+                </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

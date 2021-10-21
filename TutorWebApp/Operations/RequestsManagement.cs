@@ -9,25 +9,31 @@ namespace TutorWebApp.Operations
 {
     public class RequestsManagement
     {
-        public static List<Requests> requests = new List<Requests>();
+        // Creating a list with alll the requests
+        public static List<Request> requests = new List<Request>();
 
-        public static List<Requests> GetRequests()
+        //Getting all the requests
+        public static List<Request> GetRequests()
         {
             requests = DatabaseOperations.FetchAllRequests();
             return requests;
         }
-        public static Requests GetRequestById(int id)
+
+        //Getting a specific request by Id
+        public static Request GetRequestById(int id)
         {
-            Requests request = new Requests();
-            foreach (Requests x in requests)
+            Request request = new Request();
+            foreach (Request x in requests)
             {
                 if (x.Id == id) { request = x; break; }
             }
             return request;
         }
+
+        //Remove a request
         public static void RemoveRequest(int id)
         {
-            Requests request = GetRequestById(id);
+            Request request = GetRequestById(id);
             DatabaseOperations.RemoveRequest(GetRequestById(id));
             requests.Remove(request);
             

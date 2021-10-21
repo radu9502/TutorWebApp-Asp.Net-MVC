@@ -11,11 +11,14 @@ namespace TutorWebApp.Operations
     {
         public static List<Category> categories = new List<Category>();
 
+        //Getting all categories
         public static List<Category> GetCategories()
         {
             categories = DatabaseOperations.FetchAllCategories();
             return categories;
         }
+
+        //Getting a specific Category by Id
         public static Category GetCategoryById(int id)
         {
             Category category = new Category();
@@ -25,6 +28,8 @@ namespace TutorWebApp.Operations
             }
             return category;
         }
+
+        //Remove a certain request
         public static void RemoveRequest(int id)
         {
             Category request = GetCategoryById(id);
