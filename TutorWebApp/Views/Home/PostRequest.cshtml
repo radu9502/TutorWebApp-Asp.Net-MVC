@@ -1,0 +1,38 @@
+﻿@using TutorWebApp.Models
+@using TutorWebApp.Operations
+@model TutorWebApp.Models.Request
+@{
+    ViewData["Title"] = "Home Page";
+
+
+}
+
+
+@using (Html.BeginForm("PostRequest", "Home", FormMethod.Post, new { @class = "form" }))
+{
+    List<Category> categories = DatabaseOperations.FetchAllCategories();
+    SelectList list = new SelectList(categories, "Id", "Name");
+    <div class="container p-3 my-3 border bg-light text-left">
+        <h4 class="card-header">Completeaza:</h4><br>
+        <div class="form-group">
+            <label for="Titlu">Titlu</label>
+            @Html.TextBoxFor(m => m.Title, null, new { @class = "form-control", placeholder = "Titlu" })
+            @Html.ValidationMessageFor(m => m.Title , null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Descriere">Descriere</label>
+            @Html.TextBoxFor(m => m.Details, null, new { @class = "form-control", placeholder = "Descriere" })
+            @Html.ValidationMessageFor(m => m.Details, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Categorie">Categorie</label>
+            @Html.DropDownListFor(m => m.CategoryId, list, "Categorie", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "text-danger" })
+        </div>
+  
+
+        <input type="submit" class="btn btn-primary" value="Add" />
+    </div>
+}

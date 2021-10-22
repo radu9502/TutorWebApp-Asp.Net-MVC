@@ -31,11 +31,22 @@ namespace TutorWebApp.Controllers
             ViewBag.page = page;
             return View();
         }
-   
+
         [Authorize]
-        public IActionResult Request()
+      
+        public IActionResult PostRequest(Request request)
         {
-            return View();
+                if (string.IsNullOrEmpty(request.Title)) { ModelState.AddModelError("Titlu", "Te rugam sa introduci un titlu!"); }
+                if (string.IsNullOrEmpty(request.Details)) { ModelState.AddModelError("Descriere", "Te rugam sa introduci o descriere!"); }
+                if (string.IsNullOrEmpty(request.CategoryId.ToString())) { ModelState.AddModelError("Categorie", "Te rugam sa alegi o categorie!"); }
+
+
+                if (ModelState.IsValid)
+                {
+                    Operations.DatabaseOperations.InsertRequest(request);
+                    return RedirectToAction("Index");
+                }
+                else return View();
         }
         public IActionResult Privacy()
         {

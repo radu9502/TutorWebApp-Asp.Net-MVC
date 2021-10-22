@@ -83,7 +83,7 @@
                         @if (ViewBag.page != 1)
                         {
                             <li class="page-item">
-                                <a class="page-link" href="/Home/Index/?page=@(ViewBag.page-1)" tabindex="-1">Previous</a>
+                                <a class="page-link" href="/Home/Requests/?page=@(ViewBag.page-1)" tabindex="-1">Previous</a>
                             </li>
                         }
                         @for (int i = 1; i <= pageNumber; i++)
@@ -92,20 +92,20 @@
                             @if (i == ViewBag.page)
                             {
                                 <li class="page-item active">
-                                    <a class="page-link" href="/Home/Index/?page=@i"> @i <span class="sr-only">(current)</span></a>
+                                    <a class="page-link" href="/Home/Requests/?page=@i"> @i <span class="sr-only">(current)</span></a>
                                 </li>
                             }
                             else
                             {
 
-                                <li class="page-item"><a class="page-link" href="/Home/Index/?page=@i">@i</a></li>
+                                <li class="page-item"><a class="page-link" href="/Home/Requests/?page=@i">@i</a></li>
 
                             }
                         }
                         @if (ViewBag.page != pageNumber)
                         {
                             <li class="page-item">
-                                <a class="page-link" href="/Home/Index/?page=@(ViewBag.page-1)">Next</a>
+                                <a class="page-link" href="/Home/Requests/?page=@(ViewBag.page-1)">Next</a>
                             </li>
                         }
                     </ul>

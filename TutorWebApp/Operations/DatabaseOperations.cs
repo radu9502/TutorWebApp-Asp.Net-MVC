@@ -45,12 +45,12 @@ namespace TutorWebApp.Operations
 
         public static void InsertRequest(Request request)
         {
-            string query = "INSERT INTO Requests (RequestorId, Title, Category, Details, Price, TutorID) VALUES (@RequestorId, @Title, @Category, @Details, @Price, @TutorID);";
-            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id }, { "@RequestorId", request.RequestorId }, { "@Title", request.Title }, { "@Category", request.CategoryId }, { "@Details", request.Details }, { "@Price", request.Price }, { "@TutorID", request.TutorID } };
+            string query = "INSERT INTO Requests (RequestorId, Title, CategoryId, Details, Price, TutorId, SubCategoryId) VALUES (@RequestorId, @Title, @CategoryId, @Details, @Price, @TutorId, @SubCategoryId);";
+            Dictionary<string, object> parameters = new Dictionary<string, object>() { { "@Id", request.Id }, { "@RequestorId", request.RequestorId }, { "@Title", request.Title }, { "@Category", request.CategoryId }, { "@Details", request.Details }, { "@Price", request.Price }, { "@TutorId", request.TutorId }, { "@SubCategoryId", request.SubCategoryId } };
             ExecuteCommand(query, parameters);
         }
 
-
+     
 
         public static void RemoveRequest(Request request)
         {
